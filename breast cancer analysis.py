@@ -68,3 +68,11 @@ selected_features = ['radius_mean', 'texture_mean', 'perimeter_mean', 'area_mean
 sns.pairplot(df[selected_features], hue='diagnosis', corner=True)
 plt.suptitle('Pairplot of Selected Features by Diagnosis', y=1.02)
 plt.show()
+
+
+
+# COMMAND ----------
+
+bronze_dir = "bronze"
+os.makedirs(bronze_dir, exist_ok=True)
+spark_df.to_csv(os.path.join(bronze_dir, "breast_cancer_data_bronze.csv"), index=False)
